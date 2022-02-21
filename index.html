@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,13 +8,25 @@
   <link rel="stylesheet" href="css/style.css">
   <title>logo anime</title>
 </head>
+
 <body>
   <div class="loading-bg">
     <div class="loading-bg_logo">
       <img src="img/logo-anime-test.svg" alt="テストロゴ">
     </div>
   </div>
+  <div class="slide-bg"></div>
   <p>ローディングごの画面</p>
-  
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(window).on('load', function () {
+      $(".loading-bg_logo").delay(1300).fadeOut('slow');
+      $(".loading-bg").delay(1500).fadeOut('slow', function () {
+        $('body').addClass('appear');
+      });
+    });
+  </script>
 </body>
+
 </html>

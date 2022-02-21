@@ -4,12 +4,31 @@
   box-sizing: border-box;
 }
 
+body {
+  &.appear {
+    .slide-bg {
+      display: block;
+      position: fixed;
+      content: "";
+      width: 100%;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      transform: scaleX(0);
+      background-color: #30664b;
+      z-index: 999;
+      -webkit-animation: slideAnime 1.2s ease-in-out forwards;
+      animation: slideAnime 1.2s ease-in-out forwards;
+    }
+  }
+}
+
 .loading-bg {
   position: fixed;
   width: 100%;
   height: 100%;
   background-color: #ffffff;
-  z-index: 999;
+  z-index: 9999;
   .loading-bg_logo {
     position: absolute;
     top: 50%;
@@ -18,16 +37,53 @@
     transform: translate(-50%, -50%);
     img {
       width: 150px;
-      animation: blinking 1.2s infinite;
+      opacity: 0;
+      -webkit-animation: blinking 1.3s infinite;
+      animation: blinking 1.3s infinite;
     }
   }
 }
 
+.slide-bg {
+  display: none;
+}
+
+p {
+  animation: fadeIn 1s ease-in-out 2.5s forwards;
+  opacity: 0;
+}
+
 @keyframes blinking {
   0% {
-    opacity: 1;
+    opacity: 0;
   }
   50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes slideAnime {
+  0% {
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+  45% {
+    transform-origin: left;
+    transform: scaleX(2);
+  }
+  55% {
+    transform-origin: right;
+  }
+  100% {
+    transform-origin: right;
+    transform: scaleX(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
     opacity: 0;
   }
   100% {
